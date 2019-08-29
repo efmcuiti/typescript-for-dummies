@@ -14,7 +14,27 @@ console.log("Anon as string: " + anon);
 
 // Explicitly declared vars
 let tNumber: number;
-let tString: string = "Ass hole"
+let tString: string = "Ass hole";
 
 // With arrays
-let as: number[] = [23, 45.5, 324]
+let as: number[] = [23, 45.5, 324];
+
+// With tuples
+let address: [string, number] = ["Supastreet", 99];
+console.log("Tuple's value: " + address);
+
+// With enums
+enum Color {
+  Gray,
+  Red = 100,
+  Blue
+};
+
+let myColor: Color = Color.Red;
+console.log("My enumerated color: " + myColor);
+
+// With any
+let car: any = "BMW";
+console.log(car);
+car = {brand: "Mercedez-Benz" line: 200};
+console.log(car);
