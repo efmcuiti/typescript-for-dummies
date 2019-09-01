@@ -36,5 +36,38 @@ console.log("My enumerated color: " + myColor);
 // With any
 let car: any = "BMW";
 console.log(car);
-car = {brand: "Mercedez-Benz" line: 200};
+car = {brand: "Mercedez-Benz", line: 200};
 console.log(car);
+
+// With functions
+let myName: string = "Pro-Master";
+function returnMyName(): string {
+  return myName;
+}
+console.log("Typed function: " + returnMyName());
+
+// -> void
+function myVoid(): void {
+  console.log("This is a void-return function");
+  // return "ass"; // This makes the compiler to error out."
+}
+
+// With arguments
+function funnyMultiply(x: number, y: number): number {
+  return x*y;
+}
+// console.log("Funny multiply: " + funnyMultiply("a", 5)); // This makes the code to break.
+console.log("With a typed arguments function: " + funnyMultiply(1234, 1.4));
+
+// With function types
+let ownMultiply: (v1: number, v2: number) => number; // only functions receiving two numbers and returning a number).
+ownMultiply = funnyMultiply;
+console.log("With function types: " + ownMultiply(2, 3));
+
+// With objects
+let userData: { name: string, age: number } = {
+  name: "Thomas",
+  age: 34
+};
+
+// userData = {}; // this makes it to break because it does not match against the typed blueprint.
