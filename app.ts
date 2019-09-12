@@ -71,3 +71,45 @@ let userData: { name: string, age: number } = {
 };
 
 // userData = {}; // this makes it to break because it does not match against the typed blueprint.
+
+// With type aliases
+type Complex = {data: number[], output: (all: boolean) => number[]};
+
+let complex: Complex = {
+  data: [100, 23, 703],
+  output: function (everything: boolean): number[] {
+    if (everything)
+      return this.data;
+    else
+      return [];
+  }
+};
+
+// With union types
+let flexibleVar: number | boolean | number[] = 0;
+flexibleVar = true;
+console.log("Var as a boolean: " + flexibleVar);
+flexibleVar = 12.3;
+console.log("Var as a number: " + flexibleVar);
+flexibleVar = [2, 4, 1, 7];
+console.log("Var as an array: " + flexibleVar);
+// flexibleVar = "this should break";
+
+// With checking types
+let anyVar: string = "amma string";
+if(typeof anyVar == "string") {
+  console.log("Imma string: " + anyVar);
+}
+
+// With never
+function neverReturns(): never {
+  throw new Error("Imman error");
+  // return true; // This breaks because the method should never return.
+}
+
+// Nullable types
+let canBeNull: number | null = 23;
+canBeNull = null;
+
+let mustBeNull = null;
+// mustBeNull = 12; // This breaks because 'null' is now a type.
