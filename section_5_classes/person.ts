@@ -56,3 +56,54 @@ mega.species = "HO";
 console.log("A minimum evo: ", mega.species);
 mega.species = "absolute";
 console.log("A mega evolution: ", mega.species);
+
+// With static methods and variables
+class SomeStatic {
+  static PI: number = 3.1416;
+  static circumference(diameter: number): number {
+    return diameter * this.PI;
+  }
+}
+
+console.log("With static PI: ", SomeStatic.PI, " with static method: ", SomeStatic.circumference(12));
+
+// With abstract classes
+abstract class Project {
+  projectName: string = "Default";
+  budget: number;
+
+  abstract changeName(name: string): void;
+
+  calcBudget() {
+    return this.budget * 2;
+  }
+}
+
+class ItProject extends Project {
+  changeName(name: string): void {
+    this.projectName = name;
+  }
+}
+
+let nuProject = new ItProject();
+console.log("Naked class: ", nuProject);
+nuProject.changeName("Fucking project");
+console.log("Street class: ", nuProject);
+
+// With private constructors and singletons, and readonly.
+class OnlyOne {
+  private static instance: OnlyOne;
+
+  private constructor(public readonly name: string) {}
+
+  static getInstance(): OnlyOne {
+    if (!OnlyOne.instance) {
+      OnlyOne.instance = new OnlyOne("Fucking");
+    }
+
+    return OnlyOne.instance;
+  }
+}
+
+let correct = OnlyOne.getInstance();
+console.log("With fucking singletons and readonly: ", correct);
